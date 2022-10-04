@@ -1,0 +1,4 @@
+com/example/blechart/BuildConfig.java
+ com.example.blechart.BuildConfig
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant

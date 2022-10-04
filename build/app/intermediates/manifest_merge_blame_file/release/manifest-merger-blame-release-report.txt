@@ -1,0 +1,353 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.blechart"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml
+10    <!-- <uses-permission android:name="android.permission.INTERNET"/> -->
+11    <!-- android 블루투스 통신에 필요한 설정 start ... -->
+12    <uses-permission android:name="android.permission.BLUETOOTH" />
+12-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:5:5-68
+12-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:5:22-65
+13    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+13-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:6:5-74
+13-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:6:22-71
+14    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+14-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:7:5-80
+14-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:7:22-78
+15    <!-- Include only if your app benefits from precise location access. -->
+16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+16-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:9:5-79
+16-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:9:22-76
+17    <!-- Required only when requesting background location access on Android 10 (API level 29) and higher. -->
+18    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+18-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:11:5-85
+18-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:11:22-82
+19    <uses-permission android:name="android.permission.INTERNET" />
+19-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:7:5-67
+19-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:7:22-64
+20    <uses-permission android:name="android.permission.WAKE_LOCK" />
+20-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:8:5-68
+20-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:8:22-65
+21    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+21-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:9:5-79
+21-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:9:22-76
+22    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+22-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:7:5-81
+22-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:7:22-78
+23    <uses-permission android:name="android.permission.VIBRATE" />
+23-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:8:5-66
+23-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:8:22-63
+24    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+24-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:9:5-81
+24-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:9:22-78
+25    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+25-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:10:5-79
+25-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:10:22-76
+26    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /> <!-- android 블루투스 통신에 필요한 설정 end  ... -->
+26-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:28:5-82
+26-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:28:22-79
+27    <application
+28        android:name="android.app.Application"
+28-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:15:9-42
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.6.0] /Users/hyungtaekim/.gradle/caches/transforms-3/d118b71b31ac2018b0687bad4db3eb97/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+30        android:icon="@mipmap/ic_launcher"
+30-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:16:9-43
+31        android:label="blechart" >
+31-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:14:9-33
+32        <activity
+32-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:17:9-37:20
+33            android:name="com.example.blechart.MainActivity"
+33-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:18:13-41
+34            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+34-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:22:13-163
+35            android:exported="true"
+35-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:19:13-36
+36            android:hardwareAccelerated="true"
+36-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:23:13-47
+37            android:launchMode="singleTop"
+37-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:20:13-43
+38            android:theme="@style/LaunchTheme"
+38-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:21:13-47
+39            android:windowSoftInputMode="adjustResize" >
+39-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:24:13-55
+40
+41            <!--
+42                 Specifies an Android theme to apply to this Activity as soon as
+43                 the Android process has started. This theme is visible to the user
+44                 while the Flutter UI initializes. After that, this theme continues
+45                 to determine the Window background behind the Flutter UI.
+46            -->
+47            <meta-data
+47-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:29:13-32:17
+48                android:name="io.flutter.embedding.android.NormalTheme"
+48-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:30:15-70
+49                android:resource="@style/NormalTheme" />
+49-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:31:15-52
+50
+51            <intent-filter>
+51-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:33:13-36:29
+52                <action android:name="android.intent.action.MAIN" />
+52-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:34:17-68
+52-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:34:25-66
+53
+54                <category android:name="android.intent.category.LAUNCHER" />
+54-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:35:17-76
+54-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:35:27-74
+55            </intent-filter>
+56        </activity>
+57        <!--
+58             Don't delete the meta-data below.
+59             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+60        -->
+61        <meta-data
+61-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:40:9-42:33
+62            android:name="flutterEmbedding"
+62-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:41:13-44
+63            android:value="2" />
+63-->/Users/hyungtaekim/myProject/blechart/android/app/src/main/AndroidManifest.xml:42:13-30
+64
+65        <service
+65-->[:firebase_database] /Users/hyungtaekim/myProject/blechart/build/firebase_database/intermediates/merged_manifest/release/AndroidManifest.xml:8:9-12:19
+66            android:name="com.google.firebase.components.ComponentDiscoveryService"
+66-->[:firebase_database] /Users/hyungtaekim/myProject/blechart/build/firebase_database/intermediates/merged_manifest/release/AndroidManifest.xml:8:18-89
+67            android:directBootAware="true"
+67-->[com.google.firebase:firebase-common:20.1.1] /Users/hyungtaekim/.gradle/caches/transforms-3/d1e2b88cc91efdf73ef60a9e3cf3d884/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:35:13-43
+68            android:exported="false" >
+68-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:54:13-37
+69            <meta-data
+69-->[:firebase_database] /Users/hyungtaekim/myProject/blechart/build/firebase_database/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-11:85
+70                android:name="com.google.firebase.components:io.flutter.plugins.firebase.database.FlutterFirebaseAppRegistrar"
+70-->[:firebase_database] /Users/hyungtaekim/myProject/blechart/build/firebase_database/intermediates/merged_manifest/release/AndroidManifest.xml:10:17-127
+71                android:value="com.google.firebase.components.ComponentRegistrar" />
+71-->[:firebase_database] /Users/hyungtaekim/myProject/blechart/build/firebase_database/intermediates/merged_manifest/release/AndroidManifest.xml:11:17-82
+72            <meta-data
+72-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:34:13-36:85
+73                android:name="com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar"
+73-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:35:17-128
+74                android:value="com.google.firebase.components.ComponentRegistrar" />
+74-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:36:17-82
+75            <meta-data
+75-->[:firebase_core] /Users/hyungtaekim/myProject/blechart/build/firebase_core/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-11:85
+76                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+76-->[:firebase_core] /Users/hyungtaekim/myProject/blechart/build/firebase_core/intermediates/merged_manifest/release/AndroidManifest.xml:10:17-124
+77                android:value="com.google.firebase.components.ComponentRegistrar" />
+77-->[:firebase_core] /Users/hyungtaekim/myProject/blechart/build/firebase_core/intermediates/merged_manifest/release/AndroidManifest.xml:11:17-82
+78            <meta-data
+78-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:55:13-57:85
+79                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+79-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:56:17-119
+80                android:value="com.google.firebase.components.ComponentRegistrar" />
+80-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:57:17-82
+81            <meta-data
+81-->[com.google.firebase:firebase-database:20.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/62a63c547b75d3fbd6eef71290e5875c/transformed/jetified-firebase-database-20.0.5/AndroidManifest.xml:32:13-34:85
+82                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+82-->[com.google.firebase:firebase-database:20.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/62a63c547b75d3fbd6eef71290e5875c/transformed/jetified-firebase-database-20.0.5/AndroidManifest.xml:33:17-109
+83                android:value="com.google.firebase.components.ComponentRegistrar" />
+83-->[com.google.firebase:firebase-database:20.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/62a63c547b75d3fbd6eef71290e5875c/transformed/jetified-firebase-database-20.0.5/AndroidManifest.xml:34:17-82
+84            <meta-data
+84-->[com.google.firebase:firebase-datatransport:18.1.4] /Users/hyungtaekim/.gradle/caches/transforms-3/dc2b5cd0965c4f6bc599b48771a15090/transformed/jetified-firebase-datatransport-18.1.4/AndroidManifest.xml:28:13-30:85
+85                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+85-->[com.google.firebase:firebase-datatransport:18.1.4] /Users/hyungtaekim/.gradle/caches/transforms-3/dc2b5cd0965c4f6bc599b48771a15090/transformed/jetified-firebase-datatransport-18.1.4/AndroidManifest.xml:29:17-115
+86                android:value="com.google.firebase.components.ComponentRegistrar" />
+86-->[com.google.firebase:firebase-datatransport:18.1.4] /Users/hyungtaekim/.gradle/caches/transforms-3/dc2b5cd0965c4f6bc599b48771a15090/transformed/jetified-firebase-datatransport-18.1.4/AndroidManifest.xml:30:17-82
+87            <meta-data
+87-->[com.google.firebase:firebase-installations:17.0.1] /Users/hyungtaekim/.gradle/caches/transforms-3/5b606e4dbcb6dd2694cf2f0bdeefd2b6/transformed/jetified-firebase-installations-17.0.1/AndroidManifest.xml:18:13-20:85
+88                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+88-->[com.google.firebase:firebase-installations:17.0.1] /Users/hyungtaekim/.gradle/caches/transforms-3/5b606e4dbcb6dd2694cf2f0bdeefd2b6/transformed/jetified-firebase-installations-17.0.1/AndroidManifest.xml:19:17-127
+89                android:value="com.google.firebase.components.ComponentRegistrar" />
+89-->[com.google.firebase:firebase-installations:17.0.1] /Users/hyungtaekim/.gradle/caches/transforms-3/5b606e4dbcb6dd2694cf2f0bdeefd2b6/transformed/jetified-firebase-installations-17.0.1/AndroidManifest.xml:20:17-82
+90        </service>
+91        <service
+91-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:12:9-15:72
+92            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService"
+92-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-107
+93            android:exported="false"
+93-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:14:13-37
+94            android:permission="android.permission.BIND_JOB_SERVICE" />
+94-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-69
+95        <service
+95-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:16:9-22:19
+96            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService"
+96-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:17:13-97
+97            android:exported="false" >
+97-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:18:13-37
+98            <intent-filter>
+98-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:19:13-21:29
+99                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+99-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:20:17-78
+99-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:20:25-75
+100            </intent-filter>
+101        </service>
+102
+103        <receiver
+103-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:24:9-31:20
+104            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver"
+104-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:25:13-98
+105            android:exported="true"
+105-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:26:13-36
+106            android:permission="com.google.android.c2dm.permission.SEND" >
+106-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:27:13-73
+107            <intent-filter>
+107-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:28:13-30:29
+108                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+108-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:29:17-81
+108-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:29:25-78
+109            </intent-filter>
+110        </receiver>
+111
+112        <provider
+112-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:39:9-43:38
+113            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
+113-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:40:13-102
+114            android:authorities="com.example.blechart.flutterfirebasemessaginginitprovider"
+114-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:41:13-88
+115            android:exported="false"
+115-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:42:13-37
+116            android:initOrder="99" />
+116-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:43:13-35
+117
+118        <receiver
+118-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:13:9-15:40
+119            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
+119-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:14:13-97
+120            android:exported="false" />
+120-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-37
+121        <receiver
+121-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:16:9-25:20
+122            android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+122-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:17:13-101
+123            android:exported="false" >
+123-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:18:13-37
+124            <intent-filter>
+124-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:19:13-24:29
+125                <action android:name="android.intent.action.BOOT_COMPLETED" />
+125-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:20:17-79
+125-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:20:25-76
+126                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+126-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:21:17-84
+126-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:21:25-81
+127                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+127-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:22:17-82
+127-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:22:25-79
+128                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+128-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:23:17-82
+128-->[:flutter_local_notifications] /Users/hyungtaekim/myProject/blechart/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:23:25-79
+129            </intent-filter>
+130        </receiver>
+131
+132        <uses-library
+132-->[androidx.window:window:1.0.0-beta04] /Users/hyungtaekim/.gradle/caches/transforms-3/c291a541648cf1084eba3acf0d5d6a11/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+133            android:name="androidx.window.extensions"
+133-->[androidx.window:window:1.0.0-beta04] /Users/hyungtaekim/.gradle/caches/transforms-3/c291a541648cf1084eba3acf0d5d6a11/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+134            android:required="false" />
+134-->[androidx.window:window:1.0.0-beta04] /Users/hyungtaekim/.gradle/caches/transforms-3/c291a541648cf1084eba3acf0d5d6a11/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+135        <uses-library
+135-->[androidx.window:window:1.0.0-beta04] /Users/hyungtaekim/.gradle/caches/transforms-3/c291a541648cf1084eba3acf0d5d6a11/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+136            android:name="androidx.window.sidecar"
+136-->[androidx.window:window:1.0.0-beta04] /Users/hyungtaekim/.gradle/caches/transforms-3/c291a541648cf1084eba3acf0d5d6a11/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+137            android:required="false" />
+137-->[androidx.window:window:1.0.0-beta04] /Users/hyungtaekim/.gradle/caches/transforms-3/c291a541648cf1084eba3acf0d5d6a11/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+138
+139        <receiver
+139-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:31:9-38:20
+140            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+140-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:32:13-78
+141            android:exported="true"
+141-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:33:13-36
+142            android:permission="com.google.android.c2dm.permission.SEND" >
+142-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:34:13-73
+143            <intent-filter>
+143-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:28:13-30:29
+144                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+144-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:29:17-81
+144-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:29:25-78
+145            </intent-filter>
+146        </receiver>
+147        <!--
+148             FirebaseMessagingService performs security checks at runtime,
+149             but set to not exported to explicitly avoid allowing another app to call it.
+150        -->
+151        <service
+151-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:44:9-51:19
+152            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+152-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:45:13-82
+153            android:directBootAware="true"
+153-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:46:13-43
+154            android:exported="false" >
+154-->[com.google.firebase:firebase-messaging:23.0.5] /Users/hyungtaekim/.gradle/caches/transforms-3/831f41c14b03185f25a1f541177d6e5f/transformed/jetified-firebase-messaging-23.0.5/AndroidManifest.xml:47:13-37
+155            <intent-filter android:priority="-500" >
+155-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:19:13-21:29
+156                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+156-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:20:17-78
+156-->[:firebase_messaging] /Users/hyungtaekim/myProject/blechart/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:20:25-75
+157            </intent-filter>
+158        </service>
+159
+160        <provider
+160-->[com.google.firebase:firebase-common:20.1.1] /Users/hyungtaekim/.gradle/caches/transforms-3/d1e2b88cc91efdf73ef60a9e3cf3d884/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:26:9-31:39
+161            android:name="com.google.firebase.provider.FirebaseInitProvider"
+161-->[com.google.firebase:firebase-common:20.1.1] /Users/hyungtaekim/.gradle/caches/transforms-3/d1e2b88cc91efdf73ef60a9e3cf3d884/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:27:13-77
+162            android:authorities="com.example.blechart.firebaseinitprovider"
+162-->[com.google.firebase:firebase-common:20.1.1] /Users/hyungtaekim/.gradle/caches/transforms-3/d1e2b88cc91efdf73ef60a9e3cf3d884/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:28:13-72
+163            android:directBootAware="true"
+163-->[com.google.firebase:firebase-common:20.1.1] /Users/hyungtaekim/.gradle/caches/transforms-3/d1e2b88cc91efdf73ef60a9e3cf3d884/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:29:13-43
+164            android:exported="false"
+164-->[com.google.firebase:firebase-common:20.1.1] /Users/hyungtaekim/.gradle/caches/transforms-3/d1e2b88cc91efdf73ef60a9e3cf3d884/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:30:13-37
+165            android:initOrder="100" />
+165-->[com.google.firebase:firebase-common:20.1.1] /Users/hyungtaekim/.gradle/caches/transforms-3/d1e2b88cc91efdf73ef60a9e3cf3d884/transformed/jetified-firebase-common-20.1.1/AndroidManifest.xml:31:13-36
+166
+167        <activity
+167-->[com.google.android.gms:play-services-base:18.0.1] /Users/hyungtaekim/.gradle/caches/transforms-3/c2192f193bc8d13a09376fb3667a720e/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+168            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+168-->[com.google.android.gms:play-services-base:18.0.1] /Users/hyungtaekim/.gradle/caches/transforms-3/c2192f193bc8d13a09376fb3667a720e/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+169            android:exported="false"
+169-->[com.google.android.gms:play-services-base:18.0.1] /Users/hyungtaekim/.gradle/caches/transforms-3/c2192f193bc8d13a09376fb3667a720e/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+170            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+170-->[com.google.android.gms:play-services-base:18.0.1] /Users/hyungtaekim/.gradle/caches/transforms-3/c2192f193bc8d13a09376fb3667a720e/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+171
+172        <meta-data
+172-->[com.google.android.gms:play-services-basement:18.0.0] /Users/hyungtaekim/.gradle/caches/transforms-3/f2ad23f153d54e3a2d28e23aa8a6fa50/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+173            android:name="com.google.android.gms.version"
+173-->[com.google.android.gms:play-services-basement:18.0.0] /Users/hyungtaekim/.gradle/caches/transforms-3/f2ad23f153d54e3a2d28e23aa8a6fa50/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
+174            android:value="@integer/google_play_services_version" />
+174-->[com.google.android.gms:play-services-basement:18.0.0] /Users/hyungtaekim/.gradle/caches/transforms-3/f2ad23f153d54e3a2d28e23aa8a6fa50/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
+175
+176        <service
+176-->[com.google.android.datatransport:transport-backend-cct:3.1.5] /Users/hyungtaekim/.gradle/caches/transforms-3/ff3e6c5019e654e4081a931f33740505/transformed/jetified-transport-backend-cct-3.1.5/AndroidManifest.xml:29:9-35:19
+177            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+177-->[com.google.android.datatransport:transport-backend-cct:3.1.5] /Users/hyungtaekim/.gradle/caches/transforms-3/ff3e6c5019e654e4081a931f33740505/transformed/jetified-transport-backend-cct-3.1.5/AndroidManifest.xml:30:13-103
+178            android:exported="false" >
+178-->[com.google.android.datatransport:transport-backend-cct:3.1.5] /Users/hyungtaekim/.gradle/caches/transforms-3/ff3e6c5019e654e4081a931f33740505/transformed/jetified-transport-backend-cct-3.1.5/AndroidManifest.xml:31:13-37
+179            <meta-data
+179-->[com.google.android.datatransport:transport-backend-cct:3.1.5] /Users/hyungtaekim/.gradle/caches/transforms-3/ff3e6c5019e654e4081a931f33740505/transformed/jetified-transport-backend-cct-3.1.5/AndroidManifest.xml:32:13-34:39
+180                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+180-->[com.google.android.datatransport:transport-backend-cct:3.1.5] /Users/hyungtaekim/.gradle/caches/transforms-3/ff3e6c5019e654e4081a931f33740505/transformed/jetified-transport-backend-cct-3.1.5/AndroidManifest.xml:33:17-94
+181                android:value="cct" />
+181-->[com.google.android.datatransport:transport-backend-cct:3.1.5] /Users/hyungtaekim/.gradle/caches/transforms-3/ff3e6c5019e654e4081a931f33740505/transformed/jetified-transport-backend-cct-3.1.5/AndroidManifest.xml:34:17-36
+182        </service>
+183        <service
+183-->[com.google.android.datatransport:transport-runtime:3.1.5] /Users/hyungtaekim/.gradle/caches/transforms-3/d83c81097eb0895b4f428421bccebf4f/transformed/jetified-transport-runtime-3.1.5/AndroidManifest.xml:26:9-30:19
+184            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+184-->[com.google.android.datatransport:transport-runtime:3.1.5] /Users/hyungtaekim/.gradle/caches/transforms-3/d83c81097eb0895b4f428421bccebf4f/transformed/jetified-transport-runtime-3.1.5/AndroidManifest.xml:27:13-117
+185            android:exported="false"
+185-->[com.google.android.datatransport:transport-runtime:3.1.5] /Users/hyungtaekim/.gradle/caches/transforms-3/d83c81097eb0895b4f428421bccebf4f/transformed/jetified-transport-runtime-3.1.5/AndroidManifest.xml:28:13-37
+186            android:permission="android.permission.BIND_JOB_SERVICE" >
+186-->[com.google.android.datatransport:transport-runtime:3.1.5] /Users/hyungtaekim/.gradle/caches/transforms-3/d83c81097eb0895b4f428421bccebf4f/transformed/jetified-transport-runtime-3.1.5/AndroidManifest.xml:29:13-69
+187        </service>
+188
+189        <receiver
+189-->[com.google.android.datatransport:transport-runtime:3.1.5] /Users/hyungtaekim/.gradle/caches/transforms-3/d83c81097eb0895b4f428421bccebf4f/transformed/jetified-transport-runtime-3.1.5/AndroidManifest.xml:32:9-34:40
+190            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+190-->[com.google.android.datatransport:transport-runtime:3.1.5] /Users/hyungtaekim/.gradle/caches/transforms-3/d83c81097eb0895b4f428421bccebf4f/transformed/jetified-transport-runtime-3.1.5/AndroidManifest.xml:33:13-132
+191            android:exported="false" />
+191-->[com.google.android.datatransport:transport-runtime:3.1.5] /Users/hyungtaekim/.gradle/caches/transforms-3/d83c81097eb0895b4f428421bccebf4f/transformed/jetified-transport-runtime-3.1.5/AndroidManifest.xml:34:13-37
+192    </application>
+193
+194</manifest>

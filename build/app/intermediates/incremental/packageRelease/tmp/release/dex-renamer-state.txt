@@ -1,0 +1,4 @@
+#Wed Sep 21 11:34:18 KST 2022
+base.0=/Users/hyungtaekim/myProject/blechart/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

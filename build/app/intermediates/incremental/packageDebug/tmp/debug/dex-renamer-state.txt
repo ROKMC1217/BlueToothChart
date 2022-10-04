@@ -1,0 +1,4 @@
+#Tue Oct 04 11:12:05 KST 2022
+base.0=/Users/hyungtaekim/myProject/blechart/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
