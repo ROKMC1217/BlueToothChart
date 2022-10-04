@@ -33,7 +33,8 @@ class _Home_DevicesListScreenState extends State<Home_DevicesListScreen>
     super.didChangeDependencies();
     if (!isInit) {
       isInit = !isInit;
-      modeControlController = Provider.of<ModeControlController>(context, listen: true);
+      modeControlController =
+          Provider.of<ModeControlController>(context, listen: true);
     }
   }
 
@@ -62,176 +63,173 @@ class _Home_DevicesListScreenState extends State<Home_DevicesListScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: RefreshIndicator(
-        onRefresh: () {
-          try {
-            return FlutterBlue.instance
-                .startScan(
-              allowDuplicates: false,
-              timeout: const Duration(seconds: 4),
-            )
-                .then((value) {
-              print("startScan success");
-            }).onError((error, stackTrace) {
-              print("onError");
-            }).catchError((_) {
-              print("catchError");
-            });
-          } on Exception catch (error) {
-            print(error);
-            return FlutterBlue.instance.stopScan();
-          }
-        },
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(height: 20),
-              // 연결되었던 장치 목록 검색.
-              const Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 20,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            // SizedBox(width: 20),
+            Flexible(
+              child: ElevatedButton(
+                onPressed: () {
+                  FlutterBlue.instance
+                      .startScan(timeout: Duration(seconds: 4));
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.black,
+                  fixedSize: Size(320, 320),
+                  shape: CircleBorder(),
+                  side: BorderSide(
+                    width: 7.0,
+                    color: Colors.white,
+                  ),
                 ),
                 child: Text(
-                  "The device currently connected.",
+                  "BLE list search",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
+                    fontSize: 35,
                     fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
               ),
-              StreamBuilder<List<BluetoothDevice>>(
-                stream: Stream.periodic(const Duration(seconds: 2))
-                    .asyncMap((_) => FlutterBlue.instance.connectedDevices),
-                initialData: const [],
-                builder: (context, snapshot) => Column(
-                  children: snapshot.data!
-                      .map((bluetoothDevice) => ListTile(
-                            title: Text(
-                              bluetoothDevice.name,
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                            subtitle: Text(
-                              bluetoothDevice.id.toString(),
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                            trailing: StreamBuilder<BluetoothDeviceState>(
-                              stream: bluetoothDevice.state,
-                              initialData: BluetoothDeviceState.disconnected,
-                              builder: (context, snapshot) {
-                                if (snapshot.data ==
-                                    BluetoothDeviceState.connected) {
-                                  // OutlinedButton
-                                  return OutlinedButton(
-                                    style: OutlinedButton.styleFrom(
-                                      side: BorderSide(
-                                        color: Colors.white,
-                                      ),
+            ),
+            Flexible(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "The device currently connected.",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      StreamBuilder<List<BluetoothDevice>>(
+                        stream: Stream.periodic(const Duration(seconds: 2))
+                            .asyncMap(
+                                (_) => FlutterBlue.instance.connectedDevices),
+                        initialData: [],
+                        builder: (BuildContext context,
+                            AsyncSnapshot<List<BluetoothDevice>> snapshot) {
+                          return Column(
+                            children: snapshot.data!
+                                .map((BluetoothDevice bluetoothDevice) {
+                              return Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: <Widget>[
+                                  Text(
+                                    bluetoothDevice.name,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
                                     ),
-                                    child: Text(
-                                      "OPEN",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                      ),
+                                  ),
+                                  Text(
+                                    bluetoothDevice.id.toString(),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
                                     ),
-                                    onPressed: () => Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) => ModeControl(),
-                                      ),
+                                  ),
+                                  StreamBuilder<BluetoothDeviceState>(
+                                    stream: bluetoothDevice.state,
+                                    initialData:
+                                        BluetoothDeviceState.disconnected,
+                                    builder: ((BuildContext context,
+                                        AsyncSnapshot<BluetoothDeviceState>
+                                            snapshot) {
+                                      if (snapshot.data ==
+                                          BluetoothDeviceState.connected) {
+                                        return OutlinedButton(
+                                          style: OutlinedButton.styleFrom(
+                                            minimumSize: Size(20, 25),
+                                            side: BorderSide(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          child: Text(
+                                            "OPEN",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ModeControl()));
+                                          },
+                                        );
+                                      }
+                                      return Text(
+                                        snapshot.data.toString(),
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      );
+                                    }),
+                                  ),
+                                ],
+                              );
+                            }).toList(),
+                          );
+                        },
+                      ),
+                      Text(
+                        "A list of devices that can be connected.",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      // 연결 할 수 있는 장치들을 리스트로 반환.
+                      StreamBuilder<List<ScanResult>>(
+                        stream: FlutterBlue.instance.scanResults,
+                        initialData: [],
+                        builder: ((BuildContext context,
+                            AsyncSnapshot<List<ScanResult>> snapshot) {
+                          return Column(
+                            children:
+                                snapshot.data!.map((ScanResult scanResult) {
+                              return Home_ScanResultTile(
+                                result: scanResult,
+                                onTap: () async {
+                                  EasyLoading.show(status: 'loading...');
+                                  await modeControlController!
+                                      .connect(scanResult);
+                                  EasyLoading.dismiss();
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => ModeControl(),
                                     ),
                                   );
-                                }
-                                return Text(
-                                  snapshot.data.toString(),
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                );
-                              },
-                            ),
-                          ))
-                      .toList(),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 20,
-                ),
-                child: Text(
-                  "A list of devices that can be connected.",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+                                },
+                              );
+                            }).toList(),
+                          );
+                        }),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              // 연결 할 수 있는 장치들을 리스트로 반환.
-              StreamBuilder<List<ScanResult>>(
-                stream: FlutterBlue.instance.scanResults,
-                initialData: const [],
-                builder: (context, snapshot) => Column(
-                  children: snapshot.data!
-                      .map(
-                        (scanResult) => Home_ScanResultTile(
-                          result: scanResult,
-                          onTap: () async {
-                            EasyLoading.show(status: 'loading...');
-                            await modeControlController!.connect(scanResult);
-                            EasyLoading.dismiss();
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => ModeControl(),
-                              ),
-                            );
-                          },
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ),
-      // 블루투스 스캔 및 스캔을 중지하는 버튼.
-      floatingActionButton: StreamBuilder<bool>(
-        stream: FlutterBlue.instance.isScanning,
-        initialData: false,
-        builder: (c, snapshot) {
-          if (snapshot.data!) {
-            return FloatingActionButton(
-              child: Icon(
-                Icons.stop,
-                color: Colors.white,
-              ),
-              onPressed: () => FlutterBlue.instance.stopScan(),
-              backgroundColor: Colors.black,
-            );
-          } else {
-            return FloatingActionButton(
-              backgroundColor: Colors.black,
-              child: Icon(
-                Icons.search,
-                color: Colors.white,
-              ),
-              onPressed: () => FlutterBlue.instance.startScan(
-                timeout: Duration(seconds: 4),
-              ),
-            );
-          }
-        },
       ),
     );
   }
-
 }

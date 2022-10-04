@@ -4,8 +4,10 @@ import 'package:blechart/UserInterface/Upload/Upload.dart';
 import 'package:blechart/src/controller/HomeController.dart';
 import 'package:blechart/src/controller/ModeControlController.dart';
 import 'package:blechart/src/util/Util.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:ui' as ui;
 
 class Chart extends StatefulWidget {
   bool? modeFlag;
@@ -22,6 +24,9 @@ class _ChartState extends State<Chart> with WidgetsBindingObserver {
   bool isInit = false;
   HomeController? homeController;
   ModeControlController? modeControlController;
+  final Shader linearGradient = LinearGradient(
+    colors: <Color>[Color(0xffDA44bb), Color(0xff8921aa)],
+  ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
 
   @override
   void initState() {
@@ -42,250 +47,411 @@ class _ChartState extends State<Chart> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
+    return SafeArea(
+      child: Scaffold(
         backgroundColor: Colors.black,
-        elevation: 0.0,
-        leading: IconButton(
-          onPressed: () => Navigator.of(context).pop(),
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-        ),
-        title: Text(
-          "Chart",
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-        actions: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                side: BorderSide(
-                  color: Colors.white,
-                ),
-              ),
-              onPressed: () {
-                modeControlController!.initServerUploadData();
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => Upload(),
-                  ),
-                );
-              },
-              child: Text(
-                "File Upload",
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
+        body: Column(
           children: <Widget>[
+            // META DATA
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: Container(
-                    height: Util.height * 0.48,
-                    width: Util.width * 0.25,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          "Monkey Profile",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10,
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        "LEF Control",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          InkWell(
+                            onTap: () {
+                              modeControlController!.setLedControl([34]);
+                            },
+                            borderRadius: BorderRadius.circular(10),
+                            child: Container(
+                              width: Util.width * 0.1,
+                              height: Util.height * 0.07,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 1,
+                                  color: Colors.red,
+                                ),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Red on",
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          InkWell(
+                            onTap: () {
+                              modeControlController!.setLedControl([32]);
+                            },
+                            borderRadius: BorderRadius.circular(10),
+                            child: Container(
+                              width: Util.width * 0.1,
+                              height: Util.height * 0.07,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 1,
+                                  color: Colors.green,
+                                ),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Green on",
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 7),
+                      Row(
+                        children: <Widget>[
+                          InkWell(
+                            onTap: () {
+                              modeControlController!.setLedControl([35]);
+                            },
+                            borderRadius: BorderRadius.circular(10),
+                            child: Container(
+                              width: Util.width * 0.1,
+                              height: Util.height * 0.07,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 1,
+                                  color: Colors.red,
+                                ),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Red off",
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          InkWell(
+                            onTap: () {
+                              modeControlController!.setLedControl([33]);
+                            },
+                            borderRadius: BorderRadius.circular(10),
+                            child: Container(
+                              width: Util.width * 0.1,
+                              height: Util.height * 0.07,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 1,
+                                  color: Colors.green,
+                                ),
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Green off",
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        "Power Level",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "100%",
+                        style: TextStyle(
+                          fontSize: 29,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(3),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 1.5,
                             color: Colors.white,
                           ),
+                          borderRadius: BorderRadius.circular(3),
                         ),
-                        SizedBox(
-                          height: Util.height * 0.03,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            Container(
+                              width: Util.width * 0.025,
+                              height: Util.height * 0.05,
+                              decoration: BoxDecoration(
+                                color: Colors.purple[50],
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                            ),
+                            SizedBox(width: 3),
+                            Container(
+                              width: Util.width * 0.025,
+                              height: Util.height * 0.05,
+                              decoration: BoxDecoration(
+                                color: Colors.purple[100],
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                            ),
+                            SizedBox(width: 3),
+                            Container(
+                              width: Util.width * 0.025,
+                              height: Util.height * 0.05,
+                              decoration: BoxDecoration(
+                                color: Colors.purple[200],
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                            ),
+                            SizedBox(width: 3),
+                            Container(
+                              width: Util.width * 0.025,
+                              height: Util.height * 0.05,
+                              decoration: BoxDecoration(
+                                color: Colors.purple[300],
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                            ),
+                            SizedBox(width: 3),
+                            Container(
+                              width: Util.width * 0.025,
+                              height: Util.height * 0.05,
+                              decoration: BoxDecoration(
+                                color: Colors.purple[400],
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                            ),
+                          ],
                         ),
-                        Text(
-                          "Name",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          "C934",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(
-                          height: Util.height * 0.03,
-                        ),
-                        Text(
-                          "Species",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          "Cynomulgus",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(
-                          height: Util.height * 0.03,
-                        ),
-                        Text(
-                          "Gender",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          "Female",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(
-                          height: Util.height * 0.03,
-                        ),
-                        Text(
-                          "Age",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          "13",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10,
-                            color: Colors.white,
-                          ),
-                        ),
-                        SizedBox(
-                          height: Util.height * 0.03,
-                        ),
-                        Text(
-                          "Weight",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          "3.0kg",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 Column(
                   children: <Widget>[
-                    for (int i = 32; i < 36; i++) ...[
-                      Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(width: 3.0),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(5.0),
-                            ),
-                          ),
-                          // color: Colors.white,
-                          height: Util.height * 0.125,
-                          width: Util.width * 0.69,
-                          child: modeControlController!
-                                      .graph.targetserverUploadList ==
-                                  0
-                              ? Chart_StepLineGraph(i: i, key: UniqueKey())
-                              : Chart_Graph(i: i, key: UniqueKey()),
-                        ),
+                    Text(
+                      "Acceleration Value",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
                       ),
-                    ],
+                    ),
+                    SizedBox(height: 5),
+                    Row(
+                      children: <Widget>[
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1.5,
+                              color: Colors.white,
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "X-axis",
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromRGBO(214, 231, 239, 1),
+                                ),
+                              ),
+                              Text(
+                                "82",
+                                style: TextStyle(
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromRGBO(214, 231, 239, 1),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1.5,
+                              color: Colors.white,
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "Y-axis",
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromRGBO(178, 208, 220, 1),
+                                ),
+                              ),
+                              Text(
+                                "75",
+                                style: TextStyle(
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromRGBO(178, 208, 220, 1),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1.5,
+                              color: Colors.white,
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Text(
+                                "X-axis",
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromRGBO(120, 150, 166, 1),
+                                ),
+                              ),
+                              Text(
+                                "82",
+                                style: TextStyle(
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromRGBO(120, 150, 166, 1),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ],
             ),
-            // 32Ch Raster Mode와 32Ch LFP모드는 36개 보여주는게 맞다..
-            if (widget.modeFlag == true) ...[
-              for (int i = 0; i < 4; i++) ...[
-                IgnorePointer(
-                  ignoring: true,
-                  child: Padding(
-                    padding: const EdgeInsets.all(1.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 3.0),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5.0),
-                        ),
-                      ),
-                      height: Util.height * 0.17,
-                      width: Util.width * 0.95,
-                      child: modeControlController!.graph.targetserverUploadList == 0
-                          ? Chart_StepLineGraph(i: i, key: UniqueKey())
-                          : Chart_Graph(i: i, key: UniqueKey()),
-                    ),
-                  ),
-                ),
-              ],
-            ],
-            if (widget.modeFlag == false) ... [
-              for (int i = 0; i < 4; i++) ...[
-                IgnorePointer(
-                  ignoring: true,
-                  child: Padding(
-                    padding: const EdgeInsets.all(1.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 3.0),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5.0),
-                        ),
-                      ),
-                      height: Util.height * 0.17,
-                      width: Util.width * 0.95,
-                      child: modeControlController!.graph.targetserverUploadList == 0
-                          ? Chart_StepLineGraph(i: i, key: UniqueKey())
-                          : Chart_Graph(i: i, key: UniqueKey()),
-                    ),
-                  ),
-                ),
-              ],
-            ],
 
-            // 4Ch AP Mode와 4Ch AP + LFP모드는 8개를 보여줘야 한다.
+            // Ch1 ~ Ch2
+            Row(
+              children: <Widget>[
+                IgnorePointer(
+                  ignoring: true,
+                  child: Container(
+                    height: Util.height * 0.4,
+                      width: Util.width * 0.5,
+                    child: modeControlController!.graph.targetserverUploadList == 0
+                    ? Chart_StepLineGraph(i: 0, key: UniqueKey())
+                    : Chart_Graph(i: 0, key: UniqueKey()),
+                  ),
+                ),
+                IgnorePointer(
+                  ignoring: true,
+                  child: Container(
+                    height: Util.height * 0.4,
+                      width: Util.width * 0.5,
+                    child: modeControlController!.graph.targetserverUploadList == 0
+                    ? Chart_StepLineGraph(i: 1, key: UniqueKey())
+                    : Chart_Graph(i: 1, key: UniqueKey()),
+                  ),
+                ),
+              ],
+            ),
+
+            // Ch3 ~ Ch4
+            Row(
+              children: <Widget>[
+                IgnorePointer(
+                  ignoring: true,
+                  child: Container(
+                    height: Util.height * 0.4,
+                      width: Util.width * 0.5,
+                    child: modeControlController!.graph.targetserverUploadList == 0
+                    ? Chart_StepLineGraph(i: 2, key: UniqueKey())
+                    : Chart_Graph(i: 2, key: UniqueKey()),
+                  ),
+                ),
+                IgnorePointer(
+                  ignoring: true,
+                  child: Container(
+                    height: Util.height * 0.4,
+                      width: Util.width * 0.5,
+                    child: modeControlController!.graph.targetserverUploadList == 0
+                    ? Chart_StepLineGraph(i: 3, key: UniqueKey())
+                    : Chart_Graph(i: 3, key: UniqueKey()),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
     );
+  }
+
+  setPowerLevel(num level) {
+    if (level < 0) return;
+
+    if (0 <= level && level < 20) {
+    } else if (20 <= level && level < 40) {
+    } else if (40 <= level && level < 60) {
+    } else if (60 <= level && level < 80) {
+    } else {}
   }
 }

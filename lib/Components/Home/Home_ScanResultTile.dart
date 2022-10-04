@@ -19,12 +19,14 @@ class Home_ScanResultTile extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: Colors.white,
+              fontSize: 25,
             ),
           ),
           Text(
             result.device.id.toString(),
             style: TextStyle(
               color: Colors.white,
+              fontSize: 25,
             ),
           )
         ],
@@ -34,6 +36,7 @@ class Home_ScanResultTile extends StatelessWidget {
         result.device.id.toString(),
         style: TextStyle(
           color: Colors.white,
+          fontSize: 25,
         ),
       );
     }
@@ -106,6 +109,7 @@ class Home_ScanResultTile extends StatelessWidget {
       ),
       trailing: OutlinedButton(
         style: OutlinedButton.styleFrom(
+          minimumSize: Size(20, 25),
           side: BorderSide(
             color: (result.advertisementData.connectable)
                 ? Colors.white
