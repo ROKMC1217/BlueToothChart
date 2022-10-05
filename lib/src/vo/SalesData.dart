@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 class SalesData {
   final double x;
-  final int y;
+  final num y;
   SalesData(this.x, this.y);
 
   @override

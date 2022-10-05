@@ -3,7 +3,7 @@ class ServerUploadData {
   // 4Ch AP + LFP
   // 4Ch AP only
   // 32Ch LFP
-  List<List<int>> list = [];
+  List<List<num>> list = [];
 
   /** 차트 데이터를 받기 시작한 시간 */
   String? _startTime = "";
@@ -27,12 +27,17 @@ class ServerUploadData {
   }
 
   /** HTTP POST 통신 하기 위한 데이터 파싱 */
-  toJson(int targetNum, String fileName) {
+  toJson(int targetNum, String name, String species, String gender, String age, String weight, String fileName) {
     return {
-      "fileName": fileName,
       "start_date": this._startTime,
       "end_date": this._endTime,
       "data": this.list,
+      "name": name,
+      "species": species,
+      "gender": gender,
+      "age": age,
+      "weight": weight,
+      "fileName": fileName,
     };
   }
 

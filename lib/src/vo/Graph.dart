@@ -20,6 +20,11 @@ class Graph {
   /** 지금까지 받아왔던 차트 데이터(서버에 업로드 하기 위한 값들을 저장하는 리스트) */
   List<ServerUploadData> serverUploadLists = List.empty(growable: true);
 
+  int powerLevel = 0;
+  num xAxis = 0;
+  num yAxis = 0;
+  num zAxis = 0;
+
   /** 서버에 업로드 하기 위한 값을 구분하기 위한 serverUploadLists의 인덱스 번호 플래그 */
   int? targetserverUploadList;
 
@@ -58,47 +63,48 @@ class Graph {
       }
     }
 
-    totalList[32].add(SalesData((5 * totalCount++) / RASTER_SIZE, list[240]));
-    totalList[33].add(SalesData((5 * totalCount++) / RASTER_SIZE, list[241]));
-    totalList[34].add(SalesData((5 * totalCount++) / RASTER_SIZE, list[242]));
-    totalList[35].add(SalesData((5 * totalCount++) / RASTER_SIZE, list[243]));
+    powerLevel = ((list[240] / 245) * 100).floor();
+    xAxis = list[241];
+    yAxis = list[242];
+    zAxis = list[243];
 
-    serverUploadLists[targetserverUploadList!].list[32].add(list[240]);
-    serverUploadLists[targetserverUploadList!].list[33].add(list[241]);
-    serverUploadLists[targetserverUploadList!].list[34].add(list[242]);
-    serverUploadLists[targetserverUploadList!].list[35].add(list[243]);
+    totalList[32].add(SalesData((5 * totalCount++) / RASTER_SIZE, powerLevel));
+    totalList[33].add(SalesData((5 * totalCount++) / RASTER_SIZE, xAxis));
+    totalList[34].add(SalesData((5 * totalCount++) / RASTER_SIZE, yAxis));
+    totalList[35].add(SalesData((5 * totalCount++) / RASTER_SIZE, zAxis));
+
+    serverUploadLists[targetserverUploadList!].list[32].add(powerLevel);
+    serverUploadLists[targetserverUploadList!].list[33].add(xAxis);
+    serverUploadLists[targetserverUploadList!].list[34].add(yAxis);
+    serverUploadLists[targetserverUploadList!].list[35].add(zAxis);
     return true;
   }
 
   /** 4Ch AP, 4Ch AP + LFP Mode */
-  bool Four_AP_LFP(List<int> list) {
-    if (list.length != 244) return false;
+  // bool Four_AP_LFP(List<int> list) {
+  //   if (list.length != 244) return false;
 
-    for (int i = 0; i < 30; i++) {
-      for (int cnt = 0; cnt < 4; cnt++) {
-        int tn =
-            (list[(cnt * 2) + (i * 8)] * 0x100) + list[(cnt * 2) + (i * 8) + 1];
-        // 유저의 화면에 보여주기 위한 값을 저장.
-        totalList[cnt].add(SalesData(totalCount++ / AP_LFP_SIZE, tn));
-        // 서버에 업로드 하기 위한 데이터 저장
-        serverUploadLists[targetserverUploadList!].list[cnt].add(tn);
-      }
-    }
-
-    totalList[32]
-        .add(SalesData((4 * totalCount++) / AP_LFP_SIZE, list[240]));
-    totalList[33]
-        .add(SalesData((4 * totalCount++) / AP_LFP_SIZE, list[241]));
-    totalList[34]
-        .add(SalesData((4 * totalCount++) / AP_LFP_SIZE, list[242]));
-    totalList[35]
-        .add(SalesData((4 * totalCount++) / AP_LFP_SIZE, list[243]));
-    serverUploadLists[targetserverUploadList!].list[32].add(list[240]);
-    serverUploadLists[targetserverUploadList!].list[33].add(list[241]);
-    serverUploadLists[targetserverUploadList!].list[34].add(list[242]);
-    serverUploadLists[targetserverUploadList!].list[35].add(list[243]);
-    return true;
-  }
+  //   for (int i = 0; i < 30; i++) {
+  //     for (int cnt = 0; cnt < 4; cnt++) {
+  //       int tn =
+  //           (list[(cnt * 2) + (i * 8)] * 0x100) + list[(cnt * 2) + (i * 8) + 1];
+  //       // 유저의 화면에 보여주기 위한 값을 저장.
+  //       totalList[cnt].add(SalesData(totalCount++ / AP_LFP_SIZE, tn));
+  //       // 서버에 업로드 하기 위한 데이터 저장
+  //       serverUploadLists[targetserverUploadList!].list[cnt].add(tn);
+  //     }
+  //   }
+  //   powerLevel = ((list[240] / 245) * 100).floor();
+  //   totalList[32].add(SalesData((4 * totalCount++) / AP_LFP_SIZE, powerLevel));
+  //   totalList[33].add(SalesData((4 * totalCount++) / AP_LFP_SIZE, list[241]));
+  //   totalList[34].add(SalesData((4 * totalCount++) / AP_LFP_SIZE, list[242]));
+  //   totalList[35].add(SalesData((4 * totalCount++) / AP_LFP_SIZE, list[243]));
+  //   serverUploadLists[targetserverUploadList!].list[32].add(powerLevel);
+  //   serverUploadLists[targetserverUploadList!].list[33].add(list[241]);
+  //   serverUploadLists[targetserverUploadList!].list[34].add(list[242]);
+  //   serverUploadLists[targetserverUploadList!].list[35].add(list[243]);
+  //   return true;
+  // }
 
   /** 32Ch LFP Mode */
   bool allAdd(List<int> list) {
@@ -117,19 +123,22 @@ class Graph {
         serverUploadLists[targetserverUploadList!].list[cnt].add(tn);
       }
     }
-
+    powerLevel = ((list[240] / 245) * 100).floor();
+    xAxis = list[241];
+    yAxis = list[242];
+    zAxis = list[243];
     totalList[32]
-        .add(SalesData((5 * totalCount++) / TARGET_LIST_SIZE, list[240]));
+        .add(SalesData((5 * totalCount++) / TARGET_LIST_SIZE, powerLevel));
     totalList[33]
-        .add(SalesData((5 * totalCount++) / TARGET_LIST_SIZE, list[241]));
+        .add(SalesData((5 * totalCount++) / TARGET_LIST_SIZE, xAxis));
     totalList[34]
-        .add(SalesData((5 * totalCount++) / TARGET_LIST_SIZE, list[242]));
+        .add(SalesData((5 * totalCount++) / TARGET_LIST_SIZE, yAxis));
     totalList[35]
-        .add(SalesData((5 * totalCount++) / TARGET_LIST_SIZE, list[243]));
-    serverUploadLists[targetserverUploadList!].list[32].add(list[240]);
-    serverUploadLists[targetserverUploadList!].list[33].add(list[241]);
-    serverUploadLists[targetserverUploadList!].list[34].add(list[242]);
-    serverUploadLists[targetserverUploadList!].list[35].add(list[243]);
+        .add(SalesData((5 * totalCount++) / TARGET_LIST_SIZE, zAxis));
+    serverUploadLists[targetserverUploadList!].list[32].add(powerLevel);
+    serverUploadLists[targetserverUploadList!].list[33].add(xAxis);
+    serverUploadLists[targetserverUploadList!].list[34].add(yAxis);
+    serverUploadLists[targetserverUploadList!].list[35].add(zAxis);
     return true;
   }
 

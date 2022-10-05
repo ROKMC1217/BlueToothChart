@@ -114,10 +114,14 @@ class ModeControlController extends ChangeNotifier {
     }
   }
 
+  bool isrequestMtu = false;
   Future<bool> checkOnBluetoothCharacteristic(bool flag) async {
     try {
       // mtu 설정.
-      await device!.requestMtu(247);
+      if (!isrequestMtu) {
+        isrequestMtu = true;
+        await device!.requestMtu(247);
+      }
       bool result = await characteristic!.setNotifyValue(flag);
       if (result == false) {
         print("블루투스 연결 실패 또는 블루투스 연결 해제....");
@@ -202,26 +206,20 @@ class ModeControlController extends ChangeNotifier {
         });
       }
       return;
-    } 
-    else if (graph.targetserverUploadList == 3) {
+    } else if (graph.targetserverUploadList == 3) {
       if (graph.totalCount == 3750) {
         notifyListeners();
-      }
-      else if (graph.totalCount == 7500) {
+      } else if (graph.totalCount == 7500) {
         notifyListeners();
-      }
-      else if (graph.totalCount == 11250) {
+      } else if (graph.totalCount == 11250) {
         notifyListeners();
-      }
-      else if (graph.totalCount == 15000) {
+      } else if (graph.totalCount == 15000) {
         notifyListeners();
-      }
-      else if (graph.totalCount == 18750) {
+      } else if (graph.totalCount == 18750) {
         notifyListeners();
       } else if (graph.totalCount == 22500) {
         notifyListeners();
-      } 
-      else if (graph.totalCount == 26250) {
+      } else if (graph.totalCount == 26250) {
         notifyListeners();
       } else if (graph.totalCount >= 30000) {
         graph.allClear();
@@ -229,8 +227,7 @@ class ModeControlController extends ChangeNotifier {
           notifyListeners();
         });
       }
-    }
-    else {
+    } else {
       if (graph.totalCount == 7500) {
         notifyListeners();
       } else if (graph.totalCount == 15000) {
@@ -243,7 +240,7 @@ class ModeControlController extends ChangeNotifier {
           notifyListeners();
         });
       }
-    } 
+    }
   }
 
   Future<void> setLedControl(List<int> targetList) async {
@@ -258,9 +255,8 @@ class ModeControlController extends ChangeNotifier {
     }
   }
 
-  Future<Map<String, Object>> postHttp(String fileName) async {
-    // return;
-    print("postHTTP START");
+  Future<Map<String, Object>> postHttp(String name, String species,
+      String gender, String age, String weight, String fileName) async {
     Map<String, Object> map = {};
     try {
       var response = await http.post(
@@ -269,6 +265,11 @@ class ModeControlController extends ChangeNotifier {
         body: json.encode(
           graph.serverUploadLists[graph.targetserverUploadList!].toJson(
             graph.targetserverUploadList!,
+            name,
+            species,
+            gender,
+            age,
+            weight,
             fileName,
           ),
         ),

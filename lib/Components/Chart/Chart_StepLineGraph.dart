@@ -61,6 +61,17 @@ class _Chart_StepLineGraphState extends State<Chart_StepLineGraph>
   @override
   Widget build(BuildContext context) {
     return SfCartesianChart(
+      title: ChartTitle(
+        text: widget.index! % 2 == 0 ? "          Ch${widget.index! + 1}" : "Ch${widget.index! + 1}",
+        alignment: ChartAlignment.near,
+        textStyle: TextStyle(
+          color: getColor(),
+          fontSize: 10,
+        ),
+      ),
+      enableSideBySideSeriesPlacement: false,
+      enableMultiSelection: false,
+      borderWidth: 0,
       enableAxisAnimation: true,
       selectionGesture: ActivationMode.singleTap,
       key: widget.key,
@@ -95,46 +106,42 @@ class _Chart_StepLineGraphState extends State<Chart_StepLineGraph>
             ],
       primaryXAxis: NumericAxis(
         minimum: 0,
-        maximum: 4.0,
+        maximum: 0,
         tickPosition: TickPosition.outside,
         // plotOffset: 5,
         anchorRangeToVisiblePoints: true,
         majorGridLines: const MajorGridLines(width: 0),
-        edgeLabelPlacement: EdgeLabelPlacement.shift,
         enableAutoIntervalOnZooming: false,
         autoScrollingMode: AutoScrollingMode.start,
-        interval: widget.index! >= 32 ? 1.0 : 0.5,
         labelStyle: TextStyle(
           color: Colors.white,
-        ),
-        title: AxisTitle(
-          alignment: ChartAlignment.near,
-          text: "time",
-          textStyle: const TextStyle(
-            fontSize: 11,
-          ),
         ),
       ),
       primaryYAxis: NumericAxis(
-        minimum: 0,
-        maximum: widget.index! >= 32 ? 255.0 : 2.0,
+        minimum: -100,
+        maximum: 100,
+        interval: 100,
+        isVisible: widget.index! % 2 == 0 ? true : false,
         axisLine: const AxisLine(width: 0),
         rangePadding: ChartRangePadding.auto,
-        interval: widget.index! >= 32 ? 25.0 : 1.0,
         labelStyle: TextStyle(
           color: Colors.white,
-        ),
-        title: AxisTitle(
-          alignment: ChartAlignment.near,
-          text: "value",
-          textStyle: const TextStyle(
-            fontSize: 11,
-          ),
         ),
         labelAlignment: LabelAlignment.center,
         labelPosition: ChartDataLabelPosition.outside,
         majorGridLines: const MajorGridLines(width: 0),
       ),
     );
+  }
+  Color getColor() {
+    if (widget.index == 0) {
+      return Color.fromRGBO(224, 183, 193, 1);
+    } else if (widget.index == 1) {
+      return Color.fromRGBO(221, 100, 124, 1);
+    } else if (widget.index == 2) {
+      return Color.fromRGBO(189, 55, 80, 1);
+    } else {
+      return Color.fromRGBO(111, 40, 59, 1);
+    }
   }
 }

@@ -194,6 +194,7 @@ class _ChartState extends State<Chart> with WidgetsBindingObserver {
                   ),
                 ),
                 Container(
+                  width: Util.width * 0.152,
                   margin:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                   child: Column(
@@ -207,7 +208,7 @@ class _ChartState extends State<Chart> with WidgetsBindingObserver {
                         ),
                       ),
                       Text(
-                        "100%",
+                        "${modeControlController!.graph.powerLevel}%",
                         style: TextStyle(
                           fontSize: 29,
                           color: Colors.white,
@@ -224,53 +225,8 @@ class _ChartState extends State<Chart> with WidgetsBindingObserver {
                           borderRadius: BorderRadius.circular(3),
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            Container(
-                              width: Util.width * 0.025,
-                              height: Util.height * 0.05,
-                              decoration: BoxDecoration(
-                                color: Colors.purple[50],
-                                borderRadius: BorderRadius.circular(3),
-                              ),
-                            ),
-                            SizedBox(width: 3),
-                            Container(
-                              width: Util.width * 0.025,
-                              height: Util.height * 0.05,
-                              decoration: BoxDecoration(
-                                color: Colors.purple[100],
-                                borderRadius: BorderRadius.circular(3),
-                              ),
-                            ),
-                            SizedBox(width: 3),
-                            Container(
-                              width: Util.width * 0.025,
-                              height: Util.height * 0.05,
-                              decoration: BoxDecoration(
-                                color: Colors.purple[200],
-                                borderRadius: BorderRadius.circular(3),
-                              ),
-                            ),
-                            SizedBox(width: 3),
-                            Container(
-                              width: Util.width * 0.025,
-                              height: Util.height * 0.05,
-                              decoration: BoxDecoration(
-                                color: Colors.purple[300],
-                                borderRadius: BorderRadius.circular(3),
-                              ),
-                            ),
-                            SizedBox(width: 3),
-                            Container(
-                              width: Util.width * 0.025,
-                              height: Util.height * 0.05,
-                              decoration: BoxDecoration(
-                                color: Colors.purple[400],
-                                borderRadius: BorderRadius.circular(3),
-                              ),
-                            ),
-                          ],
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: setPowerLevel(),
                         ),
                       ),
                     ],
@@ -309,7 +265,7 @@ class _ChartState extends State<Chart> with WidgetsBindingObserver {
                                 ),
                               ),
                               Text(
-                                "82",
+                                "${modeControlController!.graph.xAxis}",
                                 style: TextStyle(
                                   fontSize: 35,
                                   fontWeight: FontWeight.bold,
@@ -340,7 +296,7 @@ class _ChartState extends State<Chart> with WidgetsBindingObserver {
                                 ),
                               ),
                               Text(
-                                "75",
+                                "${modeControlController!.graph.yAxis}",
                                 style: TextStyle(
                                   fontSize: 35,
                                   fontWeight: FontWeight.bold,
@@ -363,7 +319,7 @@ class _ChartState extends State<Chart> with WidgetsBindingObserver {
                           child: Column(
                             children: <Widget>[
                               Text(
-                                "X-axis",
+                                "z-axis",
                                 style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
@@ -371,7 +327,7 @@ class _ChartState extends State<Chart> with WidgetsBindingObserver {
                                 ),
                               ),
                               Text(
-                                "82",
+                                "${modeControlController!.graph.zAxis}",
                                 style: TextStyle(
                                   fontSize: 35,
                                   fontWeight: FontWeight.bold,
@@ -385,6 +341,25 @@ class _ChartState extends State<Chart> with WidgetsBindingObserver {
                     ),
                   ],
                 ),
+                OutlinedButton(
+                  onPressed: () {
+                    modeControlController!.initServerUploadData();
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Upload(),
+                      ),
+                    );
+                  },
+                  style: OutlinedButton.styleFrom(
+                    minimumSize: Size(10, 50),
+                  ),
+                  child: Text(
+                    "File Upload",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
               ],
             ),
 
@@ -394,21 +369,23 @@ class _ChartState extends State<Chart> with WidgetsBindingObserver {
                 IgnorePointer(
                   ignoring: true,
                   child: Container(
-                    height: Util.height * 0.4,
-                      width: Util.width * 0.5,
-                    child: modeControlController!.graph.targetserverUploadList == 0
-                    ? Chart_StepLineGraph(i: 0, key: UniqueKey())
-                    : Chart_Graph(i: 0, key: UniqueKey()),
+                    width: Util.width * 0.5,
+                    height: Util.height * 0.3,
+                    child:
+                        modeControlController!.graph.targetserverUploadList == 0
+                            ? Chart_StepLineGraph(i: 0, key: UniqueKey())
+                            : Chart_Graph(i: 0, key: UniqueKey()),
                   ),
                 ),
                 IgnorePointer(
                   ignoring: true,
                   child: Container(
-                    height: Util.height * 0.4,
-                      width: Util.width * 0.5,
-                    child: modeControlController!.graph.targetserverUploadList == 0
-                    ? Chart_StepLineGraph(i: 1, key: UniqueKey())
-                    : Chart_Graph(i: 1, key: UniqueKey()),
+                    width: Util.width * 0.5,
+                    height: Util.height * 0.3,
+                    child:
+                        modeControlController!.graph.targetserverUploadList == 0
+                            ? Chart_StepLineGraph(i: 1, key: UniqueKey())
+                            : Chart_Graph(i: 1, key: UniqueKey()),
                   ),
                 ),
               ],
@@ -420,21 +397,23 @@ class _ChartState extends State<Chart> with WidgetsBindingObserver {
                 IgnorePointer(
                   ignoring: true,
                   child: Container(
-                    height: Util.height * 0.4,
-                      width: Util.width * 0.5,
-                    child: modeControlController!.graph.targetserverUploadList == 0
-                    ? Chart_StepLineGraph(i: 2, key: UniqueKey())
-                    : Chart_Graph(i: 2, key: UniqueKey()),
+                    width: Util.width * 0.5,
+                    height: Util.height * 0.3,
+                    child:
+                        modeControlController!.graph.targetserverUploadList == 0
+                            ? Chart_StepLineGraph(i: 2, key: UniqueKey())
+                            : Chart_Graph(i: 2, key: UniqueKey()),
                   ),
                 ),
                 IgnorePointer(
                   ignoring: true,
                   child: Container(
-                    height: Util.height * 0.4,
-                      width: Util.width * 0.5,
-                    child: modeControlController!.graph.targetserverUploadList == 0
-                    ? Chart_StepLineGraph(i: 3, key: UniqueKey())
-                    : Chart_Graph(i: 3, key: UniqueKey()),
+                    width: Util.width * 0.5,
+                    height: Util.height * 0.3,
+                    child:
+                        modeControlController!.graph.targetserverUploadList == 0
+                            ? Chart_StepLineGraph(i: 3, key: UniqueKey())
+                            : Chart_Graph(i: 3, key: UniqueKey()),
                   ),
                 ),
               ],
@@ -445,13 +424,154 @@ class _ChartState extends State<Chart> with WidgetsBindingObserver {
     );
   }
 
-  setPowerLevel(num level) {
-    if (level < 0) return;
-
-    if (0 <= level && level < 20) {
-    } else if (20 <= level && level < 40) {
-    } else if (40 <= level && level < 60) {
-    } else if (60 <= level && level < 80) {
-    } else {}
+  List<Widget> setPowerLevel() {
+    if (0 <= modeControlController!.graph.powerLevel && modeControlController!.graph.powerLevel < 20) {
+      return <Widget>[
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[50],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+      ];
+    } else if (20 <= modeControlController!.graph.powerLevel && modeControlController!.graph.powerLevel < 40) {
+      return <Widget>[
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[50],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+        SizedBox(width: 3),
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[100],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+      ];
+    } else if (40 <= modeControlController!.graph.powerLevel && modeControlController!.graph.powerLevel < 60) {
+      return <Widget>[
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[50],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+        SizedBox(width: 3),
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[100],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+        SizedBox(width: 3),
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[200],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+      ];
+    } else if (60 <= modeControlController!.graph.powerLevel && modeControlController!.graph.powerLevel < 80) {
+      return <Widget>[
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[50],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+        SizedBox(width: 3),
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[100],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+        SizedBox(width: 3),
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[200],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+        SizedBox(width: 3),
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[300],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+      ];
+    } else {
+      return <Widget>[
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[50],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+        SizedBox(width: 3),
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[100],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+        SizedBox(width: 3),
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[200],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+        SizedBox(width: 3),
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[300],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+        SizedBox(width: 3),
+        Container(
+          width: Util.width * 0.025,
+          height: Util.height * 0.05,
+          decoration: BoxDecoration(
+            color: Colors.purple[400],
+            borderRadius: BorderRadius.circular(3),
+          ),
+        ),
+      ];
+    }
   }
+
+  
 }

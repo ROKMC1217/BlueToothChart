@@ -103,7 +103,7 @@ class _Home_DevicesListScreenState extends State<Home_DevicesListScreen>
                 padding: const EdgeInsets.all(8.0),
                 child: SingleChildScrollView(
                   child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         "The device currently connected.",
@@ -122,6 +122,7 @@ class _Home_DevicesListScreenState extends State<Home_DevicesListScreen>
                         builder: (BuildContext context,
                             AsyncSnapshot<List<BluetoothDevice>> snapshot) {
                           return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: snapshot.data!
                                 .map((BluetoothDevice bluetoothDevice) {
                               return Row(

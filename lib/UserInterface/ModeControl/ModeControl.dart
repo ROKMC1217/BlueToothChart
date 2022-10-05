@@ -192,8 +192,8 @@ class _ModeControlState extends State<ModeControl> {
                   SizedBox(height: 10),
                   GestureDetector(
                     onTap: () {
-                      // modeControlController!
-                      //     .setFirmwareMode(102, 1, "4Ch AP + LFP");
+                      modeControlController!
+                          .setFirmwareMode(102, 1, "4Ch AP + LFP");
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => Chart(false),
